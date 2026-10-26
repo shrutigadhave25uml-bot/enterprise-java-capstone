@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CarePoint | Hospital Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">✚</span><div><strong>CarePoint</strong><small>Hospital Management</small></div></div>
+    <nav><a class="active" href="/">Dashboard</a><a href="#appointments">Appointments</a><a href="/swagger-ui.html" target="_blank" rel="noreferrer">API Docs ↗</a></nav>
+    <span class="secure">● Connected</span>
+  </header>
+  <main class="container">
+    <section class="welcome">
+      <div><p class="eyebrow">CARE OPERATIONS</p><h1>Hospital overview</h1><p class="muted">Manage patient appointments from one clear workspace.</p></div>
+      <button id="open-form" class="primary">＋ New appointment</button>
+    </section>
+    <section class="stats">
+      <article class="stat-card"><span class="stat-icon purple">▦</span><p>Total appointments</p><strong id="total-count">—</strong><small>All records</small></article>
+      <article class="stat-card"><span class="stat-icon green">✓</span><p>Scheduled</p><strong id="scheduled-count">—</strong><small>Ready for care</small></article>
+      <article class="stat-card"><span class="stat-icon orange">◷</span><p>Departments</p><strong id="department-count">—</strong><small>Across the clinic</small></article>
+    </section>
+    <section id="appointments" class="panel">
+      <div class="panel-heading"><div><h2>Appointments</h2><p class="muted">Review and manage upcoming visits.</p></div><button id="refresh" class="secondary">↻ Refresh</button></div>
+      <div id="notice" class="notice" role="status"></div>
+      <div class="table-wrap"><table><thead><tr><th>Patient</th><th>Doctor</th><th>Department</th><th>Date</th><th>Status</th><th>Action</th></tr></thead><tbody id="appointment-rows"><tr><td colspan="6">Loading appointments…</td></tr></tbody></table></div>
+    </section>
+    <footer>CarePoint demo · Spring Boot REST API · OpenAPI documentation available</footer>
+  </main>
+  <dialog id="appointment-dialog">
+    <form id="appointment-form">
+      <div class="dialog-heading"><div><p class="eyebrow">NEW RECORD</p><h2>Book an appointment</h2></div><button type="button" id="close-form" class="icon-button" aria-label="Close">×</button></div>
+      <label>Patient name<input name="patientName" required maxlength="100" placeholder="e.g. Priya Sharma"></label>
+      <label>Doctor name<input name="doctorName" required maxlength="100" placeholder="e.g. Dr. A. Mehta"></label>
+      <label>Department<select name="department" required><option value="">Choose department</option><option>Cardiology</option><option>General Medicine</option><option>Orthopedics</option><option>Pediatrics</option><option>Neurology</option><option>Dermatology</option></select></label>
+      <label>Appointment date<input name="appointmentDate" type="date" required></label>
+      <div class="form-actions"><button type="button" id="cancel-form" class="secondary">Cancel</button><button class="primary" type="submit">Save appointment</button></div>
+    </form>
+  </dialog>
+  <script src="/app.js"></script>
+</body>
+</html>
